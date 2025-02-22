@@ -11,6 +11,14 @@ const path = require("path"); // Import the path module to handle file paths
 const app = express();
 app.use(express.json());
 
+
+// Enable CORS for all routes
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 // Load config.json
 const configPath = path.join(__dirname, "config.json");
 const config = JSON.parse(fs.readFileSync(configPath, "utf8")).data;
