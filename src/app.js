@@ -78,36 +78,57 @@ const processSubmissions = async () => {
       return;
     }
 
+    // Destructure config values
+    const { telex_notifications, email_notifications } = config.output.reduce((acc, o) => {
+      acc[o.label] = o.value;
+      return acc;
+    }, {});
+
     for (const submission of submissions) {
       const [name, email, projectTitle, budget, description] = submission;
+
+      // Validate submission data
+      if (!name || !email || !projectTitle || isNaN(budget) || !description) {
+        console.error("Invalid submission data:", submission);
+        continue; // Skip this submission
+      }
+
       const proposal = { name, email, projectTitle, budget: Number(budget), description };
 
       console.log("Processing proposal:", proposal);
 
       // Evaluate proposal
       const { isApproved, message } = proposalHandler.evaluateProposal(proposal);
-
       console.log("Proposal evaluation result:", { isApproved, message });
 
       // Send Telex notification if enabled
-      if (config.output.find((o) => o.label === "telex_notifications").value) {
-        await telexClient.sendAlert({
-          event_name: "proposal_submitted",
-          status: "success",
-          messages: `New proposal submitted: ${projectTitle} by ${name}`,
-          username: "telex_integration",
-        });
+      if (telex_notifications) {
+        try {
+          await telexClient.sendAlert({
+            event_name: "proposal_submitted",
+            status: "success",
+            messages: `New proposal submitted: ${projectTitle} by ${name}`,
+            username: "telex_integration",
+          });
+          console.log("Telex notification sent successfully.");
+        } catch (error) {
+          console.error("Failed to send Telex notification:", error);
+        }
       }
 
       // Send email notification if enabled
-      if (config.output.find((o) => o.label === "email_notifications").value) {
+      if (email_notifications) {
         const emailSubject = isApproved ? "Proposal Approved" : "Proposal Rejected";
         const emailBody = isApproved
           ? `Your proposal "${projectTitle}" has been approved. ${message}`
           : `Your proposal "${projectTitle}" has been rejected. Reason: ${message}`;
 
-        console.log("Sending email to:", email);
-        await mailjetClient.sendEmail(email, emailSubject, emailBody);
+        try {
+          await mailjetClient.sendEmail(email, emailSubject, emailBody);
+          console.log("Email sent successfully to:", email);
+        } catch (error) {
+          console.error("Failed to send email to:", email, error);
+        }
       }
     }
 
