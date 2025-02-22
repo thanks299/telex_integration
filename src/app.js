@@ -1,23 +1,20 @@
 require("dotenv").config(); // Load environment variables from .env file
 const express = require("express");
+const cors = require('cors'); 
 const { google } = require("googleapis");
 const MailjetClient = require("./mailjet_client");
 const TelexClient = require("./telex_client");
 const ProposalHandler = require("./proposal_handler");
 const cron = require("node-cron");
-const fs = require("fs"); // Import the fs module to read the config file
-const path = require("path"); // Import the path module to handle file paths
+const fs = require("fs");
+const path = require("path"); 
 
 const app = express();
 app.use(express.json());
 
 
 // Enable CORS for all routes
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'],
-}));
+app.use(cors());
 
 // Load config.json
 const configPath = path.join(__dirname, "config.json");
