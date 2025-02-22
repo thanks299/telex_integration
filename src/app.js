@@ -92,10 +92,10 @@ const processSubmissions = async () => {
       // Send Telex notification if enabled
       if (config.output.find((o) => o.label === "telex_notifications").value) {
         await telexClient.sendAlert({
-          event_type: "proposal_submitted",
-          timestamp: new Date().toISOString(),
-          details: `New proposal submitted: ${projectTitle} by ${name}`,
-          proposal: proposal,
+          event_name: "proposal_submitted",
+          status: "success",
+          messages: `New proposal submitted: ${projectTitle} by ${name}`,
+          username: "telex_integration",
         });
       }
 
