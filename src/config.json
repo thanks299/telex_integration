@@ -6,7 +6,7 @@
       },
       "descriptions": {
         "app_description": "Automatically evaluates proposals based on predefined criteria, sends approval/rejection notifications via Telex and email, and provides dynamic feedback.",
-        "app_logo": "src/assets/logo.png",
+        "app_logo": "https://github.com/thanks299/telex_integration/tree/main/src/assets/logo.png",
         "app_name": "Proposal Approval Integration",
         "app_url": "https://github.com/thanks299/telex_integration",
         "background_color": "#4CAF50"
