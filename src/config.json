@@ -8,7 +8,7 @@
         "app_description": "Automatically evaluates proposals based on predefined criteria, sends approval/rejection notifications via Telex and email, and provides dynamic feedback.",
         "app_logo": "https://example.com/logo.png",
         "app_name": "Proposal Approval Integration",
-        "app_url": "https://example.com/proposal-approval",
+        "app_url": "https://telex-integration-mdcn.onrender.com",
         "background_color": "#4CAF50"
       },
       "integration_category": "Monitoring & Logging",
@@ -69,6 +69,6 @@
           "default": "Yes"
         }
       ],
-      "target_url": "https://example.com/proposal-approval-integration"
+      "target_url": "https://telex-integration-mdcn.onrender.com/process-submissions"
     }
   }
