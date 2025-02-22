@@ -5,11 +5,15 @@ const MailjetClient = require("./mailjet_client");
 const TelexClient = require("./telex_client");
 const ProposalHandler = require("./proposal_handler");
 const cron = require("node-cron");
+const fs = require("fs"); // Import the fs module to read the config file
+const path = require("path"); // Import the path module to handle file paths
 
 const app = express();
 app.use(express.json());
 
-const config = require("./config.json").data;
+// Load config.json
+const configPath = path.join(__dirname, "config.json");
+const config = JSON.parse(fs.readFileSync(configPath, "utf8")).data;
 
 // Debug: Log Google Credentials Path
 console.log("Google Credentials Path:", process.env.GOOGLE_CREDENTIALS_PATH);
@@ -117,6 +121,18 @@ app.get("/", (req, res) => {
     integration_type: config.integration_type,
     is_active: config.is_active,
   });
+});
+
+// New route to return the entire config.json file
+app.get("/config", (req, res) => {
+  try {
+    // Read the config.json file
+    const configData = JSON.parse(fs.readFileSync(configPath, "utf8"));
+    res.json(configData); // Send the entire config as a JSON response
+  } catch (error) {
+    console.error("Error reading config file:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 // Endpoint to manually trigger submission processing
