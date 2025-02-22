@@ -107,7 +107,7 @@ const processSubmissions = async () => {
           await telexClient.sendAlert({
             event_name: "proposal_submitted",
             status: "success",
-            messages: `New proposal submitted: ${projectTitle} by ${name}`,
+            messages: `New proposal submitted: thans by ${name}`,
             username: "telex_integration",
           });
           console.log("Telex notification sent successfully.");
