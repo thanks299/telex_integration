@@ -1,0 +1,22 @@
+{
+    "name": "proposal-approval-integration",
+    "version": "1.0.0",
+    "description": "Automated proposal approval integration with Google Sheets, Mailjet, and Telex.",
+    "main": "src/app.js",
+    "scripts": {
+        "start": "node src/app.js",
+        "test": "jest"
+    },
+    "dependencies": {
+        "axios": "^1.5.0",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "google-auth-library": "^9.15.1",
+        "googleapis": "^120.0.0",
+        "node-cron": "^3.0.2",
+        "node-mailjet": "^6.0.6"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
+}

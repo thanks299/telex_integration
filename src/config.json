@@ -1,0 +1,74 @@
+{
+    "data": {
+      "date": {
+        "created_at": "2023-10-01",
+        "updated_at": "2023-10-05"
+      },
+      "descriptions": {
+        "app_description": "Automatically evaluates proposals based on predefined criteria, sends approval/rejection notifications via Telex and email, and provides dynamic feedback.",
+        "app_logo": "https://example.com/logo.png",
+        "app_name": "Proposal Approval Integration",
+        "app_url": "https://example.com/proposal-approval",
+        "background_color": "#4CAF50"
+      },
+      "integration_category": "Monitoring & Logging",
+      "integration_type": "modifier",
+      "is_active": true,
+      "output": [
+        {
+          "label": "telex_notifications",
+          "value": true
+        },
+        {
+          "label": "email_notifications",
+          "value": true
+        }
+      ],
+      "key_features": [
+        "Automated proposal evaluation based on budget and required fields.",
+        "Real-time notifications via Telex and email.",
+        "Dynamic feedback for approved or rejected proposals.",
+        "Integration with Google Sheets for proposal submissions."
+      ],
+      "permissions": {
+        "monitoring_user": {
+          "always_online": true,
+          "display_name": "Proposal Monitor"
+        }
+      },
+      "settings": [
+        {
+          "label": "Minimum Budget",
+          "type": "number",
+          "required": true,
+          "default": "1000"
+        },
+        {
+          "label": "Maximum Budget",
+          "type": "number",
+          "required": true,
+          "default": "10000"
+        },
+        {
+          "label": "Required Fields",
+          "type": "multi-checkbox",
+          "required": true,
+          "default": "projectTitle",
+          "options": ["projectTitle", "budget", "description"]
+        },
+        {
+          "label": "Send Email Notifications",
+          "type": "checkbox",
+          "required": true,
+          "default": "Yes"
+        },
+        {
+          "label": "Send Telex Notifications",
+          "type": "checkbox",
+          "required": true,
+          "default": "Yes"
+        }
+      ],
+      "target_url": "https://example.com/proposal-approval-integration"
+    }
+  }
