@@ -26,7 +26,7 @@ Before you begin, ensure you have the following:
 
     ```bash
     git clone https://github.com/thanks299/telex_integration
-    cd proposal-approval-automation
+    cd telex_integration
     ```
 
 2. **Install Dependencies**
