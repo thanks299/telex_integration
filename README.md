@@ -121,16 +121,10 @@ Update the code to use `process.env` to access these variables.
 - **Telex Notifications**: Verify the webhook URL is correct and the Telex channel is active.
 - **Gmail Errors**: Check your Gmail credentials and ensure 2FA is configured correctly.
 
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any improvements.
 
 ## Contact
 
-For questions or support, contact [Your Name] at [your-email@example.com].
+For questions or support, contact
+ **thanksagbeble@gmail.com**
 
-This README provides a comprehensive guide to setting up and running your application. Let me know if you need further assistance!
+This README provides a comprehensive guide to setting up and running your application.
